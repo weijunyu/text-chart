@@ -1,0 +1,24 @@
+{
+  "name": "text-chart",
+  "version": "0.0.0",
+  "description": "```typescript import TextChart from 'text-chart';",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weijunyu/text-chart.git"
+  },
+  "author": "Wei Junyu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/weijunyu/text-chart/issues"
+  },
+  "homepage": "https://github.com/weijunyu/text-chart#readme",
+  "devDependencies": {
+    "tslint": "^5.15.0",
+    "typescript": "^3.4.1"
+  }
+}
