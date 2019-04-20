@@ -2,7 +2,7 @@
   "name": "text-chart",
   "version": "0.0.0",
   "description": "Generate simple text-based charts",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc"
