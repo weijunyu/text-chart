@@ -2,6 +2,7 @@ import { BarCharacters, ChartProperties } from "./interfaces";
 export default abstract class TextChart {
     private properties: ChartProperties = {
         barCharacter: BarCharacters.Medium,
+        scale: 10,
     };
     constructor(properties: ChartProperties | void) {
         if (properties) {

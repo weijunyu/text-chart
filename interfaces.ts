@@ -11,6 +11,7 @@ export enum BarCharacters {
 
 export interface ChartProperties {
     barCharacter?: string | BarCharacters;
+    scale?: number;
 }
 
 export interface BarChartData {

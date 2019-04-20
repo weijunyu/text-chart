@@ -6,6 +6,19 @@ export default class Bar extends TextChart {
         this.data = chartData.data;
     }
     public render() {
-        return `Rendering bar chart! data is: ${this.getProperties().barCharacter}${JSON.stringify(this.data)}${this.getProperties().barCharacter}`;
+        console.log(`Rendering Bar chart!`);
+        let maxLabelLength = 0;
+        for (let row of this.data) {
+            let labelLength = row[0].length;
+            maxLabelLength = Math.max(maxLabelLength, labelLength);
+        }
+        let chart = '';
+        for (let row of this.data) {
+            let label = row[0];
+            let value = row[1];
+            chart += label;
+
+        }
+        return ``;
     }
 }
