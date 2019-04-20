@@ -1,16 +1,16 @@
-import textChart from "./index";
+import { BarChart } from "./index"; // Can also use default export; see index.ts
 import { BarCharacters } from "./interfaces";
 
-const tc = new textChart.Bar();
-tc.setProperties({
+const barChart = new BarChart();
+barChart.setProperties({
     scale: 10,
     barCharacter: BarCharacters.Dark,
 })
-tc.setData({
+barChart.setData({
     data: [
         ["apples", 1],
         ["oranges", 3],
         ["strawberries", 6],
     ],
 });
-console.log(tc.render());
+console.log(barChart.render());

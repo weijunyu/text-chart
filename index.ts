@@ -1,7 +1,12 @@
-import Bar from "./Bar";
+import BarChart from "./BarChart";
 import Histogram from "./Histogram";
 
 export default {
-    Bar,
+    BarChart,
+    Histogram,
+};
+
+export {
+    BarChart,
     Histogram,
 };
