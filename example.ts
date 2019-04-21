@@ -4,8 +4,8 @@ import { BarCharacters } from "./interfaces";
 const barChart = new BarChart();
 barChart.setProperties({
     scale: 10,
-    barCharacter: BarCharacters.Dark,
-})
+    barCharacter: BarCharacters.WhiteSquare,
+});
 barChart.setData({
     data: [
         ["apples", 1],

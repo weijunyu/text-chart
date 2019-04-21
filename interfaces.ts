@@ -4,9 +4,13 @@ export enum ChartType {
 }
 
 export enum BarCharacters {
-    Light = "░",
-    Medium = "▒",
-    Dark = "▓",
+    LightShade = "░",
+    MediumShade = "▒",
+    DarkShade = "▓",
+    BlackSquare = "■",
+    WhiteSquare = "□",
+    BlackRectangle = "▮",
+    WhiteRectangle = "▯",
 }
 
 export interface ChartProperties {

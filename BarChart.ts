@@ -7,23 +7,31 @@ export default class BarChart extends TextChart {
     }
     public render() {
         console.log(`Rendering Bar chart!`);
+        const properties = this.getProperties();
         let maxLabelLength = 0;
-        for (let [label, value] of this.data) {
-            let labelLength = label.length;
+        let maxAbsoluteValue = 0;
+        for (const [label, value] of this.data) {
+            const labelLength = label.length;
             maxLabelLength = Math.max(maxLabelLength, labelLength);
+
+            maxAbsoluteValue = Math.max(Math.abs(value), maxAbsoluteValue);
         }
-        let chart = '';
-        for (let [label, value] of this.data) {
-            let row = label;
-            while (row.length < maxLabelLength) {
-                row = ' ' + row;
+        if (properties.scale) {
+            return "max abs value is:" + maxAbsoluteValue;
+        } else {
+            let chart = "";
+            for (const [label, value] of this.data) {
+                let row = label;
+                while (row.length < maxLabelLength) {
+                    row = " " + row;
+                }
+                let bars = "";
+                while (bars.length < value) {
+                    bars += this.getProperties().barCharacter;
+                }
+                chart += `${row} | ${bars} ${value}\n`;
             }
-            let bars = '';
-            while (bars.length < value) {
-                bars += this.getProperties().barCharacter;
-            }
-            chart += `${row} | ${bars} ${value}\n`;
+            return chart;
         }
-        return chart;
     }
 }
