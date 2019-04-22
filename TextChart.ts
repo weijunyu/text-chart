@@ -11,7 +11,7 @@ export default abstract class TextChart {
     public getProperties(): ChartProperties {
         return this.properties;
     }
-    public setProperties(properties: ChartProperties) {
+    public setProperties(properties: ChartProperties): void {
         Object.assign(this.properties, properties);
     }
     public abstract render(): string;

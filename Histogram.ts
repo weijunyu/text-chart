@@ -1,11 +1,10 @@
-import { HistogramChartData } from "./interfaces";
 import TextChart from "./TextChart";
 export default class Histogram extends TextChart {
-    private data: number[] = [];
-    public setData(chartData: HistogramChartData) {
-        this.data = chartData.data;
+    private data: Array<[number, number]> = [];
+    public setData(data: Array<[number, number]>) {
+        this.data = data;
     }
     public render() {
-        return `Rendering histogram!`;
+        return this.data.toString();
     }
 }
