@@ -21,11 +21,12 @@ export enum BarCharacters {
 }
 
 export interface ChartProperties {
-    barCharacter?: string | BarCharacters;
+    barCharacter: string | BarCharacters;
     scale?: number;
 }
 
 export interface BarChartData {
+    // todo: remove this, have data reference Array<[string, number]> directly
     data: Array<[string, number]>;
 }
 

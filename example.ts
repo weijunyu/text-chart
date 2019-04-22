@@ -3,14 +3,14 @@ import { BarCharacters } from "./interfaces";
 
 const barChart = new BarChart();
 barChart.setProperties({
+    barCharacter: BarCharacters.BlackRectangle,
     scale: 10,
-    barCharacter: BarCharacters.WhiteSquare,
 });
 barChart.setData({
     data: [
-        ["apples", 1],
-        ["oranges", 3],
-        ["strawberries", 6],
+        ["apples", 10],
+        ["oranges", 30],
+        ["strawberries", 100],
     ],
 });
 console.log(barChart.render());
