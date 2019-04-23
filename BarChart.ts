@@ -2,8 +2,13 @@ import { ChartProperties } from "./interfaces";
 import TextChart from "./TextChart";
 export default class BarChart extends TextChart {
     private data: Array<[string, number]> = [];
-    public setData(data: Array<[string, number]>) {
+    public setData(data: Array<[string, number]>): BarChart {
         this.data = data;
+        return this;
+    }
+    public setProperties(chartProperties: ChartProperties): BarChart {
+        super.setProperties(chartProperties);
+        return this;
     }
     public render() {
         const chartProperties: ChartProperties = this.getProperties();

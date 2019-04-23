@@ -1,7 +1,7 @@
 import { BarCharacters, ChartProperties } from "./interfaces";
 export default abstract class TextChart {
     private properties: ChartProperties = {
-        barCharacter: BarCharacters.BlackRectangle,
+        barCharacter: BarCharacters.VerticalFillSquare,
     };
     constructor(properties: ChartProperties | void) {
         if (properties) {
