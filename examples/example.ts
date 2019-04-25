@@ -26,5 +26,5 @@ for (let i = 0; i < 1000; i++) {
     histogramData.push(Math.random() * 1000);
 }
 console.log(histogramNonScaled.setProperties({
-    barCharacter: BarCharacters.OrthogonalCrosshatchFillSquare,
+    barCharacter: BarCharacters.BlackSquare,
 }).setData(histogramData).render());
