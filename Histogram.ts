@@ -15,9 +15,9 @@ export default class Histogram extends TextChart {
         const max = Math.max(...this.data);
         const bins: number[] = [];
         const numberOfBins = 10;
-        const interval = (max - min) / numberOfBins;
+        const interval: number = (max - min) / numberOfBins;
         for (const value of this.data) {
-            let binIndex = 0;
+            let binIndex: number = 0;
             if (interval > 0) {
                 binIndex = Math.floor((value - min) / interval);
                 if (binIndex === numberOfBins) { // If value === max
