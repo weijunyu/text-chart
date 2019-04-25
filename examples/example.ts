@@ -12,12 +12,12 @@ console.log(barChartNonScaled.setData([
 const barChartScaled = new BarChart();
 console.log("Scaled bar chart:");
 console.log(barChartScaled.setProperties({
-    barCharacter: BarCharacters.MediumShade,
-    scale: 10,
+    barCharacter: BarCharacters.WhiteSquare,
+    width: 10,
 }).setData([
-    ["apples", 10],
-    ["oranges", 30],
-    ["strawberries", 100],
+    ["apples", 11],
+    ["oranges", 33],
+    ["strawberries", 111],
 ]).render());
 
 const histogramNonScaled = new Histogram();

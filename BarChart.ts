@@ -19,8 +19,8 @@ export default class BarChart extends TextChart {
             maxLabelLength = Math.max(maxLabelLength, labelLength);
             maxAbsoluteValue = Math.max(Math.abs(value), maxAbsoluteValue);
         }
-        if (chartProperties.scale && maxAbsoluteValue > chartProperties.scale) {
-            const scaleDownFactor = chartProperties.scale / maxAbsoluteValue;
+        if (chartProperties.width && maxAbsoluteValue > chartProperties.width) {
+            const scaleDownFactor = chartProperties.width / maxAbsoluteValue;
             // scaled data point: label, original value, scaled value
             const scaledData: Array<[string, number, number]> = this.data
                 .map(([label, value]): [string, number, number] => {
