@@ -1,4 +1,4 @@
-import { ChartProperties } from "./interfaces";
+import { HistogramProperties } from "./interfaces";
 import TextChart from "./TextChart";
 export default class Histogram extends TextChart {
     private data: number[] = [];
@@ -6,8 +6,8 @@ export default class Histogram extends TextChart {
         this.data = data;
         return this;
     }
-    public setProperties(chartProperties: ChartProperties): Histogram {
-        super.setProperties(chartProperties);
+    public setProperties(histogramProperties: HistogramProperties): Histogram {
+        super.setProperties(histogramProperties);
         return this;
     }
     public render() {
@@ -29,6 +29,17 @@ export default class Histogram extends TextChart {
             }
             bins[binIndex]++;
         }
-        return bins.toString();
+        let labels: string[] = [];
+        let lower: number = min;
+        let upper: number = 0;
+        for (let i = 0; i < numberOfBins; ++i) {
+            upper = lower + interval;
+            labels[i] = `${lower} - ${upper}`;
+            lower = upper;
+        }
+        let output = labels.map((label, index) => {
+            return `${label} | ${bins[index]}`;
+        }).join('\n')
+        return output;
     }
 }

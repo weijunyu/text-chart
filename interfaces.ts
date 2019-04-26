@@ -24,3 +24,7 @@ export interface ChartProperties {
     barCharacter?: string | BarCharacters;
     width?: number;
 }
+
+export interface HistogramProperties extends ChartProperties {
+    interval?: number;
+}
