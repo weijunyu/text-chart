@@ -27,4 +27,5 @@ for (let i = 0; i < 1000; i++) {
 }
 console.log(histogramNonScaled.setProperties({
     barCharacter: BarCharacters.BlackSquare,
+    width: 20,
 }).setData(histogramData).render());
