@@ -2,6 +2,7 @@ import chai from "chai";
 import { roundToDecimalPlace } from "../lib";
 import { BarChart, Histogram } from "../index"; // Can also use default export; see index.ts
 import { BarCharacters } from "../interfaces";
+import TextChart from "../TextChart";
 const expect = chai.expect;
 
 describe("lib.ts roundToDecimalPlace", function() {
@@ -26,24 +27,24 @@ describe("Bar Chart generation", function() {
         console.log(chart);
     })
 
-    // const barChartNonScaled = new BarChart();
-    // console.log("Non-scaled bar chart:");
-    // console.log(barChartNonScaled.setData([
-    //     ["apples", 15],
-    //     ["oranges", 3],
-    //     ["bananas", 12],
-    // ]).render());
-
-    // const barChartScaled = new BarChart();
-    // console.log("Scaled bar chart:");
-    // console.log(barChartScaled.setProperties({
-    //     barCharacter: BarCharacters.WhiteSquare,
-    //     width: 10,
-    // }).setData([
-    //     ["apples", 11],
-    //     ["oranges", 33],
-    //     ["strawberries", 111],
-    // ]).render());
+    it("Can generate a bar chart with a max width", function() {
+        const barChartScaled = new BarChart();
+        const chart: string = barChartScaled.setProperties({
+            width: 10,
+        }).setData([
+            ["apples", 11],
+            ["oranges", 33],
+            ["strawberries", 111],
+        ]).render();
+        const lines = chart.split('\n').map(line => line.trim());
+        lines.forEach((line) => {
+            let firstBarIndex = line.indexOf(TextChart.DefaultBarCharacter);
+            let lastBarIndex = line.lastIndexOf(TextChart.DefaultBarCharacter);
+            expect(firstBarIndex).to.not.equal(-1);
+            expect(lastBarIndex - firstBarIndex).to.be.at.most(10);
+        })
+        console.log(chart);
+    })
 
     // const histogramScaled = new Histogram();
     // const histogramData = [];
