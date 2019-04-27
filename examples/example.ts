@@ -20,12 +20,21 @@ console.log(barChartScaled.setProperties({
     ["strawberries", 111],
 ]).render());
 
-const histogramNonScaled = new Histogram();
+const histogramScaled = new Histogram();
 const histogramData = [];
 for (let i = 0; i < 1000; i++) {
     histogramData.push(Math.random() * 1000);
 }
-console.log(histogramNonScaled.setProperties({
+console.log(histogramScaled.setProperties({
     barCharacter: BarCharacters.BlackSquare,
     width: 20,
 }).setData(histogramData).render());
+
+const histogramSmallScale = new Histogram();
+const histogramSmallData = [];
+for (let i = 0; i < 1000; ++i) {
+    histogramSmallData.push(Math.random());
+}
+console.log(histogramSmallScale.setProperties({
+    width: 20,
+}).setData(histogramSmallData).render());

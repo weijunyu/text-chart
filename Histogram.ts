@@ -1,5 +1,5 @@
-import { HistogramProperties, ChartProperties } from "./interfaces";
-import { roundToDecimalPlace } from "./lib";
+import { ChartProperties, HistogramProperties } from "./interfaces";
+import { generateBarChartFromData ,generateBarChartFromScaledData, roundToDecimalPlace } from "./lib";
 import TextChart from "./TextChart";
 export default class Histogram extends TextChart {
     private data: number[] = [];
@@ -11,7 +11,7 @@ export default class Histogram extends TextChart {
         super.setProperties(histogramProperties);
         return this;
     }
-    public render() {
+    public render(): string {
         const min = Math.min(...this.data);
         const max = Math.max(...this.data);
         const bins: number[] = [];
@@ -42,7 +42,7 @@ export default class Histogram extends TextChart {
                 // precision is abs(-2) + 1 = 3 decimal places
                 const scale = Math.floor(Math.log10(interval)); // Negative
                 const precision = Math.abs(scale) + 1;
-                labels[i] = `${roundToDecimalPlace(lower, precision)} - ${roundToDecimalPlace(upper, precision)}}`;
+                labels[i] = `${roundToDecimalPlace(lower, precision)} - ${roundToDecimalPlace(upper, precision)}`;
             } else {
                 labels[i] = `${lower} - ${upper}`;
             }
@@ -70,68 +70,8 @@ export default class Histogram extends TextChart {
                 .map(([label, value]): [string, number, number] => {
                     return [label, value, Math.round(scaleDownFactor * value)];
                 });
-            return this.generateBarChartFromScaledData(scaledData, maxLabelLength);
+            return generateBarChartFromScaledData(scaledData, maxLabelLength, chartProperties);
         }
-        return this.generateBarChartFromData(graphData, maxLabelLength);
-
-        // let maxLabelLength = 0;
-        // for (const label of labels) {
-        //     maxLabelLength = Math.max(maxLabelLength, label.length);
-        // }
-
-        // const maxAbsoluteValue = Math.max(...bins);
-        // const chartProperties = this.getProperties();
-        // if (chartProperties.width && chartProperties.width < maxAbsoluteValue) {
-        //     const scaleDownFactor = chartProperties.width / maxAbsoluteValue;
-        //     const scaledData: Array<[string, number, number]> = bin
-        //         .map(([label, value]): [string, number, number] => {
-        //             return [label, value, Math.round(scaleDownFactor * value)];
-        //         });
-        // }
-
-        // const output = labels.map((label, index) => {
-        //     while (label.length < maxLabelLength) {
-        //         label = " " + label;
-        //     }
-        //     return `${label} | ${bins[index]}`;
-        // }).join("\n");
-        // return output;
-    }
-    private generateBarChartFromScaledData(
-        scaledData: Array<[string, number, number]>,
-        maxLabelLength: number,
-    ) {
-        let chart = "";
-        for (const [label, originalValue, scaledValue] of scaledData) {
-            let row = label;
-            while (row.length < maxLabelLength) {
-                row = " " + row;
-            }
-            let bars = "";
-            while (bars.length < scaledValue) {
-                bars += this.getProperties().barCharacter;
-            }
-            chart += `${row} | ${bars} ${originalValue}\n`;
-        }
-        return chart;
-    }
-
-    private generateBarChartFromData(
-        data: Array<[string, number]>,
-        maxLabelLength: number,
-    ) {
-        let chart = "";
-        for (const [label, value] of data) {
-            let row = label;
-            while (row.length < maxLabelLength) {
-                row = " " + row;
-            }
-            let bars = "";
-            while (bars.length < value) {
-                bars += this.getProperties().barCharacter;
-            }
-            chart += `${row} | ${bars} ${value}\n`;
-        }
-        return chart;
+        return generateBarChartFromData(graphData, maxLabelLength, chartProperties);
     }
 }

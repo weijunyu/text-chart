@@ -1,4 +1,5 @@
 import { ChartProperties } from "./interfaces";
+import { generateBarChartFromData, generateBarChartFromScaledData } from "./lib"
 import TextChart from "./TextChart";
 export default class BarChart extends TextChart {
     private data: Array<[string, number]> = [];
@@ -10,7 +11,7 @@ export default class BarChart extends TextChart {
         super.setProperties(chartProperties);
         return this;
     }
-    public render() {
+    public render(): string {
         const chartProperties: ChartProperties = this.getProperties();
         let maxLabelLength: number = 0;
         let maxAbsoluteValue: number = 0;
@@ -26,46 +27,8 @@ export default class BarChart extends TextChart {
                 .map(([label, value]): [string, number, number] => {
                     return [label, value, Math.round(scaleDownFactor * value)];
                 });
-            return this.generateBarChartFromScaledData(scaledData, maxLabelLength);
+            return generateBarChartFromScaledData(scaledData, maxLabelLength, chartProperties);
         }
-        return this.generateBarChartFromData(this.data, maxLabelLength);
-    }
-
-    private generateBarChartFromScaledData(
-        scaledData: Array<[string, number, number]>,
-        maxLabelLength: number,
-    ) {
-        let chart = "";
-        for (const [label, originalValue, scaledValue] of scaledData) {
-            let row = label;
-            while (row.length < maxLabelLength) {
-                row = " " + row;
-            }
-            let bars = "";
-            while (bars.length < scaledValue) {
-                bars += this.getProperties().barCharacter;
-            }
-            chart += `${row} | ${bars} ${originalValue}\n`;
-        }
-        return chart;
-    }
-
-    private generateBarChartFromData(
-        data: Array<[string, number]>,
-        maxLabelLength: number,
-    ) {
-        let chart = "";
-        for (const [label, value] of data) {
-            let row = label;
-            while (row.length < maxLabelLength) {
-                row = " " + row;
-            }
-            let bars = "";
-            while (bars.length < value) {
-                bars += this.getProperties().barCharacter;
-            }
-            chart += `${row} | ${bars} ${value}\n`;
-        }
-        return chart;
+        return generateBarChartFromData(this.data, maxLabelLength, chartProperties);
     }
 }
