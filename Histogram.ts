@@ -12,6 +12,9 @@ export default class Histogram extends TextChart {
         return this;
     }
     public render(): string {
+        if (!this.data || this.data.length === 0) {
+            throw new Error("Couldn't render histogram because no data has been set for it!");
+        }
         const min = Math.min(...this.data);
         const max = Math.max(...this.data);
         const bins: number[] = [];

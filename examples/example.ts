@@ -60,3 +60,19 @@ console.log(histogramSmallScale
     })
     .setData(histogramSmallData)
     .render());
+
+const customHistogram = new Histogram();
+const customHistogramData = [];
+for (let i = 0; i < 10000; ++i) {
+    customHistogramData.push(Math.random() * 100);
+}
+console.log("Histogram with all options");
+console.log(customHistogram
+    .setProperties({
+        min: 0,
+        max: 100,
+        interval: 10,
+        width: 30,
+    })
+    .setData()
+    .render());

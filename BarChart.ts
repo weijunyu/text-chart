@@ -12,6 +12,9 @@ export default class BarChart extends TextChart {
         return this;
     }
     public render(): string {
+        if (!this.data || this.data.length === 0) {
+            throw new Error("Couldn't render bar chart because no data has been set for it!");
+        }
         const chartProperties: ChartProperties = this.getProperties();
         let maxLabelLength: number = 0;
         let maxAbsoluteValue: number = 0;
