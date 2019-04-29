@@ -1,5 +1,5 @@
 import { BarChart, Histogram } from "../index"; // Can also use default export; see index.ts
-import { BarCharacters } from "../interfaces";
+import { BarCharacters } from "../src/interfaces";
 
 const barChartNonScaled = new BarChart();
 console.log("Non-scaled bar chart:");
@@ -74,5 +74,5 @@ console.log(customHistogram
         interval: 10,
         width: 30,
     })
-    .setData()
+    .setData(customHistogramData)
     .render());

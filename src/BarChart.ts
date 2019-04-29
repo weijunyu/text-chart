@@ -1,5 +1,5 @@
 import { ChartProperties } from "./interfaces";
-import { generateBarChartFromData, generateBarChartFromScaledData } from "./lib"
+import { generateBarChartFromData, generateBarChartFromScaledData } from "./lib";
 import TextChart from "./TextChart";
 export default class BarChart extends TextChart {
     private data: Array<[string, number]> = [];

@@ -1,5 +1,5 @@
-import { ChartProperties, HistogramProperties } from "./interfaces";
-import { generateBarChartFromData ,generateBarChartFromScaledData, roundToDecimalPlace } from "./lib";
+import { HistogramProperties } from "./interfaces";
+import { generateBarChartFromData, generateBarChartFromScaledData, roundToDecimalPlace } from "./lib";
 import TextChart from "./TextChart";
 export default class Histogram extends TextChart {
     private data: number[] = [];

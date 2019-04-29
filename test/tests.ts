@@ -1,8 +1,7 @@
 import chai from "chai";
-import { roundToDecimalPlace } from "../lib";
 import { BarChart, Histogram } from "../index"; // Can also use default export; see index.ts
-import { BarCharacters } from "../interfaces";
-import TextChart from "../TextChart";
+import { roundToDecimalPlace } from "../src/lib";
+import TextChart from "../src/TextChart";
 const expect = chai.expect;
 
 describe("lib.ts roundToDecimalPlace", function() {
@@ -107,6 +106,6 @@ describe("Histogram generation", function() {
             .render();
         console.log(chart);
         const lines: string[] = chart.split('\n').map(line => line.trim());
-        expect(lines).to.have.lengthOf(5);
+        expect(lines).to.have.lengthOf(6);
     })
 })

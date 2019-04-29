@@ -1,5 +1,5 @@
-import BarChart from "./BarChart";
-import Histogram from "./Histogram";
+import BarChart from "./src/BarChart";
+import Histogram from "./src/Histogram";
 
 export default {
     BarChart,
