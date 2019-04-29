@@ -21,6 +21,7 @@ describe("Bar Chart generation", function() {
                 ["bananas", 12],
             ])
             .render();
+        console.log(chart);
         const lines = chart.split('\n').map(line => line.trim());
         expect(lines).to.have.lengthOf(3);
         expect(lines[0].startsWith("apples")).to.be.true;
@@ -40,6 +41,7 @@ describe("Bar Chart generation", function() {
                 ["strawberries", 111],
             ])
             .render();
+        console.log(chart);
         const lines = chart.split('\n').map(line => line.trim());
         lines.forEach((line) => {
             let firstBarIndex = line.indexOf(TextChart.DefaultBarCharacter);
@@ -69,7 +71,7 @@ describe("Bar Chart generation", function() {
     // }).setData(histogramSmallData).render());
 })
 describe("Histogram generation", function() {
-    it("can generate a histogram with default options and auto-calculates intervals", function() {
+    it("Can generate a histogram with default options and auto-calculates intervals", function() {
         const histogramDefault = new Histogram();
         const histogramDefaultData = [];
         for (let i = 1; i <= 100; i++) {
@@ -78,6 +80,7 @@ describe("Histogram generation", function() {
         const chart = histogramDefault
             .setData(histogramDefaultData)
             .render();
+        console.log(chart);
         const lines: string[] = chart.split('\n').map(line => line.trim());
         expect(lines).to.have.lengthOf(10); // 10 bins by default
         lines.forEach((line) => {
@@ -86,5 +89,24 @@ describe("Histogram generation", function() {
             expect(firstBarIndex).to.not.equal(-1);
             expect(lastBarIndex - firstBarIndex).to.equal(9);
         })
+    })
+    it("Can render a histogram with given min, max and interval values", function() {
+        const customHistogram = new Histogram();
+        const customHistogramData = [];
+        for (let i = 0; i < 10000; ++i) {
+            customHistogramData.push(Math.random() * 100);
+        }
+        const chart = customHistogram
+            .setProperties({
+                min: 0,
+                max: 100,
+                interval: 20,
+                width: 30,
+            })
+            .setData(customHistogramData)
+            .render();
+        console.log(chart);
+        const lines: string[] = chart.split('\n').map(line => line.trim());
+        expect(lines).to.have.lengthOf(5);
     })
 })

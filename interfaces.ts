@@ -27,4 +27,6 @@ export interface ChartProperties {
 
 export interface HistogramProperties extends ChartProperties {
     interval?: number;
+    min?: number;
+    max?: number;
 }

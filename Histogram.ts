@@ -15,11 +15,24 @@ export default class Histogram extends TextChart {
         if (!this.data || this.data.length === 0) {
             throw new Error("Couldn't render histogram because no data has been set for it!");
         }
-        const min = Math.min(...this.data);
-        const max = Math.max(...this.data);
+        const chartProperties: HistogramProperties = this.getProperties();
+        const min: number = chartProperties.min != null ?
+            chartProperties.min :
+            Math.min(...this.data);
+        const max = chartProperties.max != null ?
+            chartProperties.max :
+            Math.max(...this.data);
+        let numberOfBins = 0;
+        let interval: number = 0;
+        if (chartProperties.interval) {
+            interval = chartProperties.interval;
+            numberOfBins = Math.ceil((max - min) / interval);
+        } else {
+            numberOfBins = 10;
+            interval = (max - min) / numberOfBins;
+        }
         const bins: number[] = [];
-        const numberOfBins = 10;
-        const interval: number = (max - min) / numberOfBins;
+    
         for (const value of this.data) {
             let binIndex: number = 0;
             if (interval > 0) {
@@ -58,7 +71,6 @@ export default class Histogram extends TextChart {
             graphData.push([label, bins[index]]);
         });
 
-        const chartProperties: ChartProperties = this.getProperties();
         let maxLabelLength: number = 0;
         let maxAbsoluteValue: number = 0;
         for (const [label, value] of graphData) {
