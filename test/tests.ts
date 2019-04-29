@@ -99,7 +99,7 @@ describe("Histogram generation", function() {
         const chart = customHistogram
             .setProperties({
                 min: 0,
-                max: 100,
+                max: 110,
                 interval: 20,
                 width: 30,
             })

@@ -16,6 +16,7 @@ export default class Histogram extends TextChart {
             throw new Error("Couldn't render histogram because no data has been set for it!");
         }
         const chartProperties: HistogramProperties = this.getProperties();
+        // Use != null comparison because number variable might be defined as 0, which is falsey.
         const min: number = chartProperties.min != null ?
             chartProperties.min :
             Math.min(...this.data);
@@ -24,7 +25,7 @@ export default class Histogram extends TextChart {
             Math.max(...this.data);
         let numberOfBins = 0;
         let interval: number = 0;
-        if (chartProperties.interval) {
+        if (chartProperties.interval != null) {
             interval = chartProperties.interval;
             numberOfBins = Math.ceil((max - min) / interval);
         } else {
@@ -46,9 +47,17 @@ export default class Histogram extends TextChart {
             }
             bins[binIndex]++;
         }
+        if (bins.length < numberOfBins) {
+            for (let i = 0; i < numberOfBins; ++i) {
+                if (bins[i] === undefined) {
+                    bins[i] = 0;
+                }
+            }
+        }
         const labels: string[] = [];
         let lower: number = min;
         let upper: number = 0;
+        // todo: skip label calculations if interval/min/max is given
         for (let i = 0; i < numberOfBins; ++i) {
             upper = lower + interval;
             if (interval > 1 && !Number.isInteger(interval)) {
