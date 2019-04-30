@@ -98,14 +98,27 @@ describe("Histogram generation", function() {
         const chart = customHistogram
             .setProperties({
                 min: 0,
-                max: 110,
+                max: 100,
                 interval: 20,
-                width: 30,
+                width: 20,
             })
             .setData(customHistogramData)
             .render();
         console.log(chart);
         const lines: string[] = chart.split('\n').map(line => line.trim());
-        expect(lines).to.have.lengthOf(6);
+        expect(lines).to.have.lengthOf(5);
+    })
+    it("Can render a histogram with empty bins", function() {
+        const histogram = new Histogram();
+        const histogramData = [1,1,3,3,3,3,3,5,5,9];
+        const chart = histogram
+            .setProperties({
+                min: 0,
+                max: 10,
+                interval: 2,
+            })
+            .setData(histogramData)
+            .render();
+        console.log(chart);
     })
 })
