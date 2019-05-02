@@ -1,4 +1,5 @@
 # Text Charts
+Generate text-based bar charts and histograms.
 
 ## Default histogram label rounding
 ### Interval >= 1

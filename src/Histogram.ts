@@ -33,7 +33,7 @@ export default class Histogram extends TextChart {
             interval = (max - min) / numberOfBins;
         }
         const bins: number[] = [];
-    
+
         for (const value of this.data) {
             let binIndex: number = 0;
             if (interval > 0) {
@@ -47,13 +47,13 @@ export default class Histogram extends TextChart {
             }
             bins[binIndex]++;
         }
-        if (bins.length < numberOfBins) {
-            for (let i = 0; i < numberOfBins; ++i) {
-                if (bins[i] === undefined) {
-                    bins[i] = 0;
-                }
+
+        for (let i = 0; i < numberOfBins; ++i) {
+            if (bins[i] === undefined) {
+                bins[i] = 0;
             }
         }
+
         const labels: string[] = [];
         let lower: number = min;
         let upper: number = 0;

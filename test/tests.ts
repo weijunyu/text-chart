@@ -44,8 +44,10 @@ describe("Bar Chart generation", function() {
 
     it("Throws an error if render is called without setting data", function() {
         const barChart = new BarChart();
-        expect(barChart.render.bind(barChart)).to.throw(/Couldn't render bar chart/);
-    })
+        expect(barChart.render.bind(barChart)).to.throw(
+            /Couldn't render bar chart/
+        );
+    });
 });
 describe("Histogram generation", function() {
     it("Can generate a histogram with default options and auto-calculates intervals", function() {
@@ -120,9 +122,10 @@ describe("Histogram generation", function() {
         expect(lastBar[lastBar.length - 1]).to.equal("0");
         expect(secondLastBar[secondLastBar.length - 1]).to.equal("0");
     });
-
     it("Throws an error when render is called without setting data", function() {
         const histogram = new Histogram();
-        expect(histogram.render.bind(histogram)).to.throw(/Couldn't render histogram/)
-    })
+        expect(histogram.render.bind(histogram)).to.throw(
+            /Couldn't render histogram/
+        );
+    });
 });
