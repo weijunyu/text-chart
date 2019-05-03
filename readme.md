@@ -4,6 +4,7 @@ Generate text-based bar charts and histograms.
 ## Usage - see examples.ts
 ```typescript
 import { BarChart } from "text-chart";
+// Or use import TextChart from "text-chart"; new TextChart.BarChart() etc
 
 const barChart = new BarChart();
 barChart
