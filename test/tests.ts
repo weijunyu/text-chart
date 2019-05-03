@@ -19,9 +19,9 @@ describe("Bar Chart generation", function() {
         console.log(chart);
         const lines = chart.split("\n").map(line => line.trim());
         expect(lines).to.have.lengthOf(3);
-        expect(lines[0].startsWith("apples")).to.be.true;
-        expect(lines[1].startsWith("oranges")).to.be.true;
-        expect(lines[2].startsWith("bananas")).to.be.true;
+        expect(lines[0].indexOf("apples")).to.equal(0);
+        expect(lines[1].indexOf("oranges")).to.equal(0);
+        expect(lines[2].indexOf("bananas")).to.equal(0);
     });
 
     it("Can generate a bar chart with a max width", function() {

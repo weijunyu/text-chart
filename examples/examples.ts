@@ -1,4 +1,4 @@
-import { BarCharacters, BarChart, Histogram } from "../index"; // Can also use default export; see index.ts
+import { BarCharacters, BarChart, Histogram } from "text-chart"; // Can also use default export; see index.ts
 
 const barChart = new BarChart();
 barChart
