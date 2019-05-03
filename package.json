@@ -17,6 +17,7 @@
   "bugs": {
     "url": "https://github.com/weijunyu/text-chart/issues"
   },
+  "types": "dist/index.d.ts",
   "homepage": "https://github.com/weijunyu/text-chart#readme",
   "devDependencies": {
     "@types/chai": "^4.1.7",
