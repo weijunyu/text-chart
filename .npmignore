@@ -1,4 +1,8 @@
 .circleci
 .vscode
 examples
+src
 test
+index.ts
+tsconfig.json
+tslint.json
