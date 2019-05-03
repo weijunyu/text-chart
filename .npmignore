@@ -1,7 +1,7 @@
 .circleci
 .vscode
 examples
-src
+./src
 test
 index.ts
 tsconfig.json
