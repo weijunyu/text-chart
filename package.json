@@ -1,6 +1,6 @@
 {
   "name": "text-chart",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Generate simple text-based charts",
   "main": "dist/index.js",
   "scripts": {
