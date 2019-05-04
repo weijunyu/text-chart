@@ -1,4 +1,7 @@
 # Text Charts
+![npm](https://img.shields.io/npm/v/text-chart.svg)
+[![CircleCI](https://circleci.com/gh/weijunyu/text-chart.svg?style=shield)](https://circleci.com/gh/weijunyu/text-chart)
+
 Generate text-based bar charts and histograms.
 
 ## Usage - see examples.ts
