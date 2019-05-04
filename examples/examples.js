@@ -1,6 +1,6 @@
-import { BarCharacters, BarChart, Histogram } from "../index";
+const TextChart =  require("../dist");
 
-const barChart = new BarChart();
+const barChart = new TextChart.BarChart();
 barChart
     .setProperties({
         width: 10 // Set maximum width
@@ -13,14 +13,14 @@ oranges | ■■■ 3
 bananas | ■■■■■■■■■■■■ 12
 */
 
-const histogram = new Histogram().setProperties({
+const histogram = new TextChart.Histogram().setProperties({
     min: 0,
     max: 70,
     interval: 10,
     width: 20,
-    barCharacter: BarCharacters.WhiteSquare // Set bar appearance
+    barCharacter: TextChart.BarCharacters.WhiteSquare // Set bar appearance
 });
-const histogramData: number[] = [];
+const histogramData = [];
 for (let i = 0; i < 1000; i++) {
     histogramData.push(Math.random() * 60);
 }
@@ -39,11 +39,11 @@ console.log(histogram.render());
 60 - 70 | □□□□□□ 180
 */
 
-const histogramDefault = new Histogram().setProperties({
+const histogramDefault = new TextChart.Histogram().setProperties({
     width: 20,
     barCharacter: '*'
 });
-const histogramDefaultData: number[] = [];
+const histogramDefaultData = [];
 for (let i = 0; i < 1000; i++) {
     histogramDefaultData.push(Math.random() * 60);
 }
