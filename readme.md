@@ -4,15 +4,15 @@
 
 Generate text-based bar charts and histograms.
 
-## Usage - see examples.ts
+## Usage (see examples.ts and examples.js)
+### Bar charts
 ```typescript
 import { BarChart } from "text-chart";
-// Or use import TextChart from "text-chart"; new TextChart.BarChart() etc
 
 const barChart = new BarChart();
 barChart
     .setProperties({
-        width: 10 // Set maximum width
+        width: 10
     })
     .setData([["apples", 15], ["oranges", 3], ["bananas", 12]]);
 console.log(barChart.render());
@@ -30,7 +30,7 @@ const histogram = new Histogram().setProperties({
     max: 70,
     interval: 10,
     width: 20,
-    barCharacter: BarCharacters.WhiteSquare // Set bar appearance
+    barCharacter: BarCharacters.WhiteSquare
 });
 const histogramData: number[] = [];
 for (let i = 0; i < 1000; i++) {
@@ -42,13 +42,13 @@ for (let i = 0; i < 1000; i++) {
 histogram.setData(histogramData);
 console.log(histogram.render());
 /* 
- 0 - 10 | □□□□□□ 174
-10 - 20 | □□□□□ 153
-20 - 30 | □□□□□□ 175
-30 - 40 | □□□□□□□ 189
-40 - 50 | □□□□□□□□□□□□□□□□□□□□ 573
-50 - 60 | □□□□□□□□□□□□□□□□□□□ 541
-60 - 70 | □□□□□□□ 195
+ 0 - 10 | □□□□□ 163
+10 - 20 | □□□□□ 158
+20 - 30 | □□□□□ 164
+30 - 40 | □□□□□□ 176
+40 - 50 | □□□□□□□□□□□□□□□□□□□□ 602
+50 - 60 | □□□□□□□□□□□□□□□□□□□ 557
+60 - 70 | □□□□□□ 180
 */
 ```
 
@@ -59,27 +59,39 @@ There will be 10 intervals by default, from which values for minimum/maximum/int
 import { BarCharacters, Histogram } from "text-chart";
 const histogramDefault = new Histogram().setProperties({
     width: 20,
-    barCharacter: BarCharacters.WhiteSquare
+    barCharacter: "*"
 });
 const histogramDefaultData: number[] = [];
 for (let i = 0; i < 1000; i++) {
-    histogramDefaultData.push(Math.random() * 250);
+    histogramDefaultData.push(Math.random() * 60);
 }
 for (let i = 0; i < 1000; i++) {
-    histogramDefaultData.push(50 + Math.random() * 50);
+    histogramDefaultData.push(40 + Math.random() * 25);
 }
 histogramDefault.setData(histogramDefaultData);
 console.log(histogramDefault.render());
 /*
- 0.31 - 10.28 | □□□□□□□ 118
-10.28 - 20.25 | □□□□□□ 95
-20.25 - 30.22 | □□□□□□ 97
-30.22 - 40.19 | □□□□□□ 96
-40.19 - 50.15 | □□□□□□□ 107
-50.15 - 60.12 | □□□□□□□□□□□□□□□□□□□ 300
-60.12 - 70.09 | □□□□□□□□□□□□□□□□□□□ 296
-70.09 - 80.06 | □□□□□□□□□□□□□□□□□□ 282
-80.06 - 90.03 | □□□□□□□□□□□□□□□□□□ 289
-90.03 - 99.99 | □□□□□□□□□□□□□□□□□□□□ 320
+  0.52 - 6.97 | ****** 117
+ 6.97 - 13.42 | ***** 100
+13.42 - 19.86 | ****** 105
+19.86 - 26.31 | ****** 108
+26.31 - 32.76 | ****** 117
+32.76 - 39.21 | ***** 102
+39.21 - 45.66 | ****************** 339
+ 45.66 - 52.1 | ******************* 355
+ 52.1 - 58.55 | ******************** 375
+   58.55 - 65 | *************** 282
 */
 ```
+### Instance methods
+#### `setData(data: Array<[string, number]>): BarChart;`
+`data`: array of `[label(string), value(number)]` arrays that corresponds to each bar. Must be called before `render()`!
+
+#### `setProperties(properties)`
+`properties.width` (optional): 
+Sets maximum width (number of characters) of chart. If not given, bars will be rendered according to values in `setData`.
+
+`properties.barCharacter` (optional): 
+Character used to render bars.
+
+`properties.min`, `properties.max`, `properties.interval` (optional, histogram only): Set minimum, maximum and interval values for histogram. If left out, estimates will be calculated from the data.

@@ -3,7 +3,7 @@ import { BarCharacters, BarChart, Histogram } from "../index";
 const barChart = new BarChart();
 barChart
     .setProperties({
-        width: 10 // Set maximum width
+        width: 10
     })
     .setData([["apples", 15], ["oranges", 3], ["bananas", 12]]);
 console.log(barChart.render());
@@ -18,7 +18,7 @@ const histogram = new Histogram().setProperties({
     max: 70,
     interval: 10,
     width: 20,
-    barCharacter: BarCharacters.WhiteSquare // Set bar appearance
+    barCharacter: BarCharacters.WhiteSquare
 });
 const histogramData: number[] = [];
 for (let i = 0; i < 1000; i++) {
@@ -41,7 +41,7 @@ console.log(histogram.render());
 
 const histogramDefault = new Histogram().setProperties({
     width: 20,
-    barCharacter: '*'
+    barCharacter: "*"
 });
 const histogramDefaultData: number[] = [];
 for (let i = 0; i < 1000; i++) {

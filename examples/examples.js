@@ -1,9 +1,9 @@
-const TextChart =  require("../dist");
+const TextChart = require("../dist");
 
 const barChart = new TextChart.BarChart();
 barChart
     .setProperties({
-        width: 10 // Set maximum width
+        width: 10
     })
     .setData([["apples", 15], ["oranges", 3], ["bananas", 12]]);
 console.log(barChart.render());
@@ -18,7 +18,7 @@ const histogram = new TextChart.Histogram().setProperties({
     max: 70,
     interval: 10,
     width: 20,
-    barCharacter: TextChart.BarCharacters.WhiteSquare // Set bar appearance
+    barCharacter: TextChart.BarCharacters.WhiteSquare
 });
 const histogramData = [];
 for (let i = 0; i < 1000; i++) {
