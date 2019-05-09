@@ -1,6 +1,6 @@
 # Text Charts
 [![npm](https://img.shields.io/npm/v/text-chart.svg)](https://www.npmjs.com/package/text-chart)
-[![CircleCI branch](https://img.shields.io/circleci/project/github/weijunyu/text-chart/master.svg)](https://circleci.com/gh/weijunyu/text-chart/tree/master)
+[![CircleCI](https://circleci.com/gh/weijunyu/text-chart.svg?style=shield)](https://circleci.com/gh/weijunyu/text-chart)
 
 Generate text-based bar charts and histograms.
 

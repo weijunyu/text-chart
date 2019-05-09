@@ -1,5 +1,5 @@
 import chai from "chai";
-import { BarChart, Histogram } from "../index"; // Can also use default export; see index.ts
+import { BarChart, Histogram } from "../src/index"; // Can also use default export; see index.ts
 import { roundToDecimalPlace } from "../src/lib";
 import TextChart from "../src/TextChart";
 const expect = chai.expect;

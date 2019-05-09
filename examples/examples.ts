@@ -1,4 +1,4 @@
-import { BarCharacters, BarChart, Histogram } from "../index";
+import { BarCharacters, BarChart, Histogram } from "../dist";
 
 const barChart = new BarChart();
 barChart
