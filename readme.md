@@ -1,20 +1,16 @@
 # Text Charts
 [![npm](https://img.shields.io/npm/v/text-chart.svg)](https://www.npmjs.com/package/text-chart)
-[![CircleCI](https://circleci.com/gh/weijunyu/text-chart.svg?style=shield)](https://circleci.com/gh/weijunyu/text-chart)
+![CircleCI branch](https://img.shields.io/circleci/project/github/weijunyu/text-chart/master.svg)
 
 Generate text-based bar charts and histograms.
 
-## Usage (see examples.ts and examples.js)
+## Usage (TypeScript)
 ### Bar charts
 ```typescript
 import { BarChart } from "text-chart";
 
 const barChart = new BarChart();
-barChart
-    .setProperties({
-        width: 10
-    })
-    .setData([["apples", 15], ["oranges", 3], ["bananas", 12]]);
+barChart.setData([["apples", 15], ["oranges", 3], ["bananas", 12]]);
 console.log(barChart.render());
 /*
  apples | ■■■■■■■■■■■■■■■ 15
@@ -56,7 +52,7 @@ console.log(histogram.render());
 There will be 10 intervals by default, from which values for minimum/maximum/interval size will be estimated.
 
 ```typescript
-import { BarCharacters, Histogram } from "text-chart";
+import { Histogram } from "text-chart";
 const histogramDefault = new Histogram().setProperties({
     width: 20,
     barCharacter: "*"
@@ -83,6 +79,10 @@ console.log(histogramDefault.render());
    58.55 - 65 | *************** 282
 */
 ```
+
+## Usage (JavaScript)
+See `examples.js`
+
 ### Instance methods
 #### `setData(data: Array<[string, number]>): BarChart;`
 `data`: array of `[label(string), value(number)]` arrays that corresponds to each bar. Must be called before `render()`!
