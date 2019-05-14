@@ -4,7 +4,7 @@
   "description": "Generate simple text-based charts",
   "main": "dist/index.js",
   "scripts": {
-    "prepublish": "npm run test && npm run clean && npm run compile",
+    "prepublishOnly": "npm run test && npm run clean && npm run compile",
     "clean": "rm -rf dist",
     "test": "mocha --require ts-node/register test/**/*.ts",
     "examples": "npm run clean && npm run compile && ts-node examples/examples.ts && node examples/examples.js",
