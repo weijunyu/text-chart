@@ -1,11 +1,7 @@
-import { BarCharacters, BarChart, Histogram } from "../dist";
+import { BarCharacters, BarChart, Histogram } from "../src";
 
 const barChart = new BarChart();
-barChart
-    .setProperties({
-        width: 10
-    })
-    .setData([["apples", 15], ["oranges", 3], ["bananas", 12]]);
+barChart.setData([["apples", 15], ["oranges", 3], ["bananas", 12]]);
 console.log(barChart.render());
 /*
  apples | ■■■■■■■■■■■■■■■ 15
@@ -29,7 +25,7 @@ for (let i = 0; i < 1000; i++) {
 }
 histogram.setData(histogramData);
 console.log(histogram.render());
-/* 
+/*
  0 - 10 | □□□□□ 163
 10 - 20 | □□□□□ 158
 20 - 30 | □□□□□ 164
@@ -40,8 +36,7 @@ console.log(histogram.render());
 */
 
 const histogramDefault = new Histogram().setProperties({
-    width: 20,
-    barCharacter: "*"
+    width: 20, // Limit chart's max width
 });
 const histogramDefaultData: number[] = [];
 for (let i = 0; i < 1000; i++) {
@@ -53,14 +48,14 @@ for (let i = 0; i < 1000; i++) {
 histogramDefault.setData(histogramDefaultData);
 console.log(histogramDefault.render());
 /*
-  0.52 - 6.97 | ****** 117
- 6.97 - 13.42 | ***** 100
-13.42 - 19.86 | ****** 105
-19.86 - 26.31 | ****** 108
-26.31 - 32.76 | ****** 117
-32.76 - 39.21 | ***** 102
-39.21 - 45.66 | ****************** 339
- 45.66 - 52.1 | ******************* 355
- 52.1 - 58.55 | ******************** 375
-   58.55 - 65 | *************** 282
+  0.01 - 6.51 | ■■■■■■ 106
+ 6.51 - 13.01 | ■■■■■ 103
+13.01 - 19.51 | ■■■■■■ 117
+19.51 - 26.01 | ■■■■■ 102
+ 26.01 - 32.5 | ■■■■■■■ 125
+    32.5 - 39 | ■■■■■ 101
+    39 - 45.5 | ■■■■■■■■■■■■■■■■■ 320
+    45.5 - 52 | ■■■■■■■■■■■■■■■■■■■ 353
+    52 - 58.5 | ■■■■■■■■■■■■■■■■■■■■ 381
+ 58.5 - 64.99 | ■■■■■■■■■■■■■■■ 292
 */

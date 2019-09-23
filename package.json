@@ -2,38 +2,39 @@
   "name": "text-chart",
   "version": "1.0.7",
   "description": "Generate simple text-based charts",
-  "main": "dist/index.js",
-  "scripts": {
-    "prepublishOnly": "npm run test && npm run clean && npm run compile",
-    "clean": "rm -rf dist",
-    "test": "mocha --require ts-node/register test/**/*.ts",
-    "examples": "npm run clean && npm run compile && ts-node examples/examples.ts && node examples/examples.js",
-    "compile": "tsc"
+  "keywords": [
+    "chart"
+  ],
+  "homepage": "https://github.com/weijunyu/text-chart#readme",
+  "bugs": {
+    "url": "https://github.com/weijunyu/text-chart/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/weijunyu/text-chart.git"
   },
-  "author": "Wei Junyu <junyuwei@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/weijunyu/text-chart/issues"
-  },
-  "types": "dist/index.d.ts",
+  "author": "Wei Junyu <junyuwei@gmail.com>",
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/weijunyu/text-chart#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "compile": "tsc",
+    "examples": "npm run clean && npm run compile && ts-node examples/examples.ts && node examples/examples.js",
+    "prepublishOnly": "npm run test && npm run clean && npm run compile",
+    "test": "mocha --require ts-node/register test/**/*.ts",
+    "lint": "tslint --fix './**/*.ts'"
+  },
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
     "ts-node": "^8.1.0",
-    "tslint": "^5.16.0",
+    "tslint": "^5.20.0",
     "typescript": "^3.4.5"
-  },
-  "keywords": [
-    "chart"
-  ]
+  }
 }

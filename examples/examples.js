@@ -1,11 +1,7 @@
 const TextChart = require("../dist");
 
 const barChart = new TextChart.BarChart();
-barChart
-    .setProperties({
-        width: 10
-    })
-    .setData([["apples", 15], ["oranges", 3], ["bananas", 12]]);
+barChart.setData([["apples", 15], ["oranges", 3], ["bananas", 12]]);
 console.log(barChart.render());
 /*
  apples | ■■■■■■■■■■■■■■■ 15
@@ -41,7 +37,6 @@ console.log(histogram.render());
 
 const histogramDefault = new TextChart.Histogram().setProperties({
     width: 20,
-    barCharacter: '*'
 });
 const histogramDefaultData = [];
 for (let i = 0; i < 1000; i++) {
@@ -53,14 +48,14 @@ for (let i = 0; i < 1000; i++) {
 histogramDefault.setData(histogramDefaultData);
 console.log(histogramDefault.render());
 /*
-  0.52 - 6.97 | ****** 117
- 6.97 - 13.42 | ***** 100
-13.42 - 19.86 | ****** 105
-19.86 - 26.31 | ****** 108
-26.31 - 32.76 | ****** 117
-32.76 - 39.21 | ***** 102
-39.21 - 45.66 | ****************** 339
- 45.66 - 52.1 | ******************* 355
- 52.1 - 58.55 | ******************** 375
-   58.55 - 65 | *************** 282
+  0.21 - 6.69 | ■■■■■■ 110
+ 6.69 - 13.17 | ■■■■■■ 106
+13.17 - 19.64 | ■■■■■■ 107
+19.64 - 26.12 | ■■■■■■ 116
+ 26.12 - 32.6 | ■■■■■ 97
+ 32.6 - 39.08 | ■■■■■■ 114
+39.08 - 45.56 | ■■■■■■■■■■■■■■■■■■■ 348
+45.56 - 52.04 | ■■■■■■■■■■■■■■■■■■■■ 372
+52.04 - 58.51 | ■■■■■■■■■■■■■■■■■■■ 352
+58.51 - 64.99 | ■■■■■■■■■■■■■■■ 278
 */

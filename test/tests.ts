@@ -17,7 +17,7 @@ describe("Bar Chart generation", function() {
             .setData([["apples", 15], ["oranges", 3], ["bananas", 12]])
             .render();
         console.log(chart);
-        const lines = chart.split("\n").map(line => line.trim());
+        const lines = chart.split("\n").map((line) => line.trim());
         expect(lines).to.have.lengthOf(3);
         expect(lines[0].indexOf("apples")).to.equal(0);
         expect(lines[1].indexOf("oranges")).to.equal(0);
@@ -33,10 +33,10 @@ describe("Bar Chart generation", function() {
             .setData([["apples", 11], ["oranges", 33], ["strawberries", 111]])
             .render();
         console.log(chart);
-        const lines = chart.split("\n").map(line => line.trim());
-        lines.forEach(line => {
-            let firstBarIndex = line.indexOf(TextChart.DefaultBarCharacter);
-            let lastBarIndex = line.lastIndexOf(TextChart.DefaultBarCharacter);
+        const lines = chart.split("\n").map((line) => line.trim());
+        lines.forEach((line) => {
+            const firstBarIndex = line.indexOf(TextChart.DefaultBarCharacter);
+            const lastBarIndex = line.lastIndexOf(TextChart.DefaultBarCharacter);
             expect(firstBarIndex).to.not.equal(-1);
             expect(lastBarIndex - firstBarIndex).to.be.at.most(10);
         });
@@ -58,11 +58,11 @@ describe("Histogram generation", function() {
         }
         const chart = histogramDefault.setData(histogramDefaultData).render();
         console.log(chart);
-        const lines: string[] = chart.split("\n").map(line => line.trim());
+        const lines: string[] = chart.split("\n").map((line) => line.trim());
         expect(lines).to.have.lengthOf(10); // 10 bins by default
-        lines.forEach(line => {
-            let firstBarIndex = line.indexOf(TextChart.DefaultBarCharacter);
-            let lastBarIndex = line.lastIndexOf(TextChart.DefaultBarCharacter);
+        lines.forEach((line) => {
+            const firstBarIndex = line.indexOf(TextChart.DefaultBarCharacter);
+            const lastBarIndex = line.lastIndexOf(TextChart.DefaultBarCharacter);
             expect(firstBarIndex).to.not.equal(-1);
             expect(lastBarIndex - firstBarIndex).to.equal(10 - 1);
         });
@@ -83,16 +83,16 @@ describe("Histogram generation", function() {
             .setData(customHistogramData)
             .render();
         console.log(chart);
-        const lines: string[] = chart.split("\n").map(line => line.trim());
+        const lines: string[] = chart.split("\n").map((line) => line.trim());
         expect(lines).to.have.lengthOf(6);
-        let lastBar = lines[lines.length - 1];
+        const lastBar = lines[lines.length - 1];
         expect(lastBar[lastBar.length - 1]).to.equal("0");
-        let longestBarLength = lines.reduce(
-            (longestBarLength: number, currentLine: string) => {
-                let currentBarLength =
+        const longestBarLength = lines.reduce(
+            (longest: number, currentLine: string) => {
+                const currentBarLength =
                     currentLine.lastIndexOf(TextChart.DefaultBarCharacter) -
                     currentLine.indexOf(TextChart.DefaultBarCharacter);
-                return Math.max(longestBarLength, currentBarLength);
+                return Math.max(longest, currentBarLength);
             },
             0
         );
@@ -115,10 +115,10 @@ describe("Histogram generation", function() {
         });
         const chart = customHistogram.setData(customHistogramData).render();
         console.log(chart);
-        const lines: string[] = chart.split("\n").map(line => line.trim());
+        const lines: string[] = chart.split("\n").map((line) => line.trim());
         expect(lines).to.have.lengthOf(5);
-        let lastBar = lines[lines.length - 1];
-        let secondLastBar = lines[lines.length - 2];
+        const lastBar = lines[lines.length - 1];
+        const secondLastBar = lines[lines.length - 2];
         expect(lastBar[lastBar.length - 1]).to.equal("0");
         expect(secondLastBar[secondLastBar.length - 1]).to.equal("0");
     });

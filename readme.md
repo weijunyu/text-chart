@@ -1,11 +1,16 @@
 # Text Charts
+
 [![npm](https://img.shields.io/npm/v/text-chart.svg)](https://www.npmjs.com/package/text-chart)
 [![CircleCI](https://circleci.com/gh/weijunyu/text-chart.svg?style=shield)](https://circleci.com/gh/weijunyu/text-chart)
 
 Generate text-based bar charts and histograms.
 
-## Usage (TypeScript)
+## Usage - basic
+
 ### Bar charts
+
+#### TypeScript
+
 ```typescript
 import { BarChart } from "text-chart";
 
@@ -18,44 +23,29 @@ oranges | ■■■ 3
 bananas | ■■■■■■■■■■■■ 12
 */
 ```
-### Histogram with all options
-```typescript
-import { BarCharacters, Histogram } from "text-chart";
-const histogram = new Histogram().setProperties({
-    min: 0,
-    max: 70,
-    interval: 10,
-    width: 20,
-    barCharacter: BarCharacters.WhiteSquare
-});
-const histogramData: number[] = [];
-for (let i = 0; i < 1000; i++) {
-    histogramData.push(Math.random() * 60);
-}
-for (let i = 0; i < 1000; i++) {
-    histogramData.push(40 + Math.random() * 25);
-}
-histogram.setData(histogramData);
-console.log(histogram.render());
-/* 
- 0 - 10 | □□□□□ 163
-10 - 20 | □□□□□ 158
-20 - 30 | □□□□□ 164
-30 - 40 | □□□□□□ 176
-40 - 50 | □□□□□□□□□□□□□□□□□□□□ 602
-50 - 60 | □□□□□□□□□□□□□□□□□□□ 557
-60 - 70 | □□□□□□ 180
+
+#### Node.js
+
+```javascript
+const TextChart = require("text-chart");
+const barChart = new TextChart.BarChart();
+barChart.setData([["apples", 15], ["oranges", 3], ["bananas", 12]]);
+console.log(barChart.render());
+/*
+ apples | ■■■■■■■■■■■■■■■ 15
+oranges | ■■■ 3
+bananas | ■■■■■■■■■■■■ 12
 */
 ```
 
-### Histogram with default options
-There will be 10 intervals by default, from which values for minimum/maximum/interval size will be estimated.
+### Histograms
+
+#### TypeScript
 
 ```typescript
 import { Histogram } from "text-chart";
 const histogramDefault = new Histogram().setProperties({
-    width: 20,
-    barCharacter: "*"
+    width: 20, // Limit chart's max width
 });
 const histogramDefaultData: number[] = [];
 for (let i = 0; i < 1000; i++) {
@@ -67,31 +57,65 @@ for (let i = 0; i < 1000; i++) {
 histogramDefault.setData(histogramDefaultData);
 console.log(histogramDefault.render());
 /*
-  0.52 - 6.97 | ****** 117
- 6.97 - 13.42 | ***** 100
-13.42 - 19.86 | ****** 105
-19.86 - 26.31 | ****** 108
-26.31 - 32.76 | ****** 117
-32.76 - 39.21 | ***** 102
-39.21 - 45.66 | ****************** 339
- 45.66 - 52.1 | ******************* 355
- 52.1 - 58.55 | ******************** 375
-   58.55 - 65 | *************** 282
+  0.01 - 6.51 | ■■■■■■ 106
+ 6.51 - 13.01 | ■■■■■ 103
+13.01 - 19.51 | ■■■■■■ 117
+19.51 - 26.01 | ■■■■■ 102
+ 26.01 - 32.5 | ■■■■■■■ 125
+    32.5 - 39 | ■■■■■ 101
+    39 - 45.5 | ■■■■■■■■■■■■■■■■■ 320
+    45.5 - 52 | ■■■■■■■■■■■■■■■■■■■ 353
+    52 - 58.5 | ■■■■■■■■■■■■■■■■■■■■ 381
+ 58.5 - 64.99 | ■■■■■■■■■■■■■■■ 292
 */
 ```
 
-## Usage (JavaScript)
-See `examples.js`
+#### Node.js
 
-### Instance methods
-#### `setData(data: Array<[string, number]>): BarChart;`
-`data`: array of `[label(string), value(number)]` arrays that corresponds to each bar. Must be called before `render()`!
+```javascript
+const TextChart = require("text-chart");
+const histogramDefault = new TextChart.Histogram().setProperties({
+    width: 20,
+});
+const histogramDefaultData = [];
+for (let i = 0; i < 1000; i++) {
+    histogramDefaultData.push(Math.random() * 60);
+}
+for (let i = 0; i < 1000; i++) {
+    histogramDefaultData.push(40 + Math.random() * 25);
+}
+histogramDefault.setData(histogramDefaultData);
+console.log(histogramDefault.render());
+/*
+  0.21 - 6.69 | ■■■■■■ 110
+ 6.69 - 13.17 | ■■■■■■ 106
+13.17 - 19.64 | ■■■■■■ 107
+19.64 - 26.12 | ■■■■■■ 116
+ 26.12 - 32.6 | ■■■■■ 97
+ 32.6 - 39.08 | ■■■■■■ 114
+39.08 - 45.56 | ■■■■■■■■■■■■■■■■■■■ 348
+45.56 - 52.04 | ■■■■■■■■■■■■■■■■■■■■ 372
+52.04 - 58.51 | ■■■■■■■■■■■■■■■■■■■ 352
+58.51 - 64.99 | ■■■■■■■■■■■■■■■ 278
+*/
+```
 
-#### `setProperties(properties)`
-`properties.width` (optional): 
+## Instance methods
+
+### (BarChart) `setData(data: Array<[string, number]>): BarChart;`
+
+`data` is an array of arrays with each sub-array's first element being the bar's label (string) and second element being the value of that bar.
+
+### (Histogram) `setData(data: number[]): Histogram`
+
+`data` is an array of numbers.
+
+### (Histogram, BarChart) `setProperties(properties): BarChart | Histogram`
+
+`properties.width` (optional):
 Sets maximum width (number of characters) of chart. If not given, bars will be rendered according to values in `setData`.
 
-`properties.barCharacter` (optional): 
+`properties.barCharacter` (optional):
 Character used to render bars.
 
 `properties.min`, `properties.max`, `properties.interval` (optional, histogram only): Set minimum, maximum and interval values for histogram. If left out, estimates will be calculated from the data.
